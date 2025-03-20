@@ -7,8 +7,6 @@ import logging
 import cohere
 import os
 import re
-##COHERE_API_KEY="ZGzGvuaIHCoMUihq1DoHSpl741wUTwZuXdSkgcKQ"
-##COHERE_API_KEY="P28PBGM9qfKcd0TJZChtwrhJPSVLK102JcQ2aN0v"
 
 STRUCTURED_PROMPT_TEMPLATE = """Generate a comprehensive summary with this exact structure:
 

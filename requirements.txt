@@ -1,25 +1,40 @@
-# Core Dependencies
-# Core Dependencies
-gradio
-transformers
-torch
-sentence-transformers
-pdfplumber
-pymupdf
-python-dotenv
-langdetect
-nltk
-scikit-learn
-matplotlib
-bitsandbytes
-accelerate
-huggingface-hub
-cohere
-langchain_openai
-sentencepiece
-protobuf
-datetime
-typing
-requests
-google.generativeai
-topic-wizard
+# Core dependencies
+python=3.10
+gradio==4.24.0
+numpy==1.26.4
+pandas==2.2.2
+python-dotenv==1.0.1
+
+# PDF processing
+pdfplumber==0.11.0
+pymupdf==1.24.2
+
+# NLP processing
+nltk==3.8.1
+langdetect==1.0.9
+spacy==3.7.4
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.0/en_core_web_sm-3.7.0-py3-none-any.whl
+
+# ML/NLP frameworks
+torch==2.2.1+cpu
+transformers==4.39.3
+sentence-transformers==2.7.0
+scikit-learn==1.4.2
+
+# Visualization
+matplotlib==3.8.3
+plotly==5.19.0
+networkx==3.2.1
+topicwizard==0.9.3
+
+# APIs and utilities
+requests==2.31.0
+cohere==4.45.0
+langchain-openai==0.1.1
+langchain-core==0.1.42
+
+protobuf==3.20.3
+tensorflow-cpu==2.16.1  # Requires protobuf>=3.20.3
+tensorboard==2.16.2      # Compatible with protobuf 3.20.3
+opentelemetry-proto==1.19.0  # Last version supporting protobuf<4.0
+google-generativeai==0.3.2

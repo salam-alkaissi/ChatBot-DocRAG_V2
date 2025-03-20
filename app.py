@@ -29,6 +29,7 @@ COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 # NER Setup
 tokenizer = AutoTokenizer.from_pretrained("bert-base-cased", use_fast=True)
 model = BertForTokenClassification.from_pretrained("./models/NER_finetuned_bert_base", from_tf=True)
+#model = BertForTokenClassification.from_pretrained("dbmdz/bert-large-cased-finetuned-conll03-english")
 nlp = pipeline('ner', model=model, tokenizer=tokenizer)
 
 # Initialize components

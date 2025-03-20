@@ -28,7 +28,7 @@ A powerful document analysis tool combining RAG (Retrieval-Augmented Generation)
 
 1. **Clone Repository**
 ```bash
-git clone https://github.com/yourusername/docurag.git
+git clone https://github.com/salam-alkaissi/ChatBot-DocRAG_V2
 cd docurag
 
 

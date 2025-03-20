@@ -6,7 +6,7 @@ from langchain_core.prompts import ChatPromptTemplate
 import google.generativeai as genai
 
 load_dotenv("config/api_keys.env")
-genai.configure(api_key="AIzaSyDbkx5JmWKdCZ7FHKOVZJZRZo940VAH0f8")
+genai.configure(api_key="")
 
 class RAGPipeline:
     def __init__(self, retriever):

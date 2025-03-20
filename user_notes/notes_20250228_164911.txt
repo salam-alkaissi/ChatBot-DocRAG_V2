@@ -1,0 +1,21 @@
+Note saved at 16:49:
+**Summary of the PDF Content:**
+
+1. **Formal Concept Analysis (FCA) in Semantics:**
+   - Explores **partial orders** and **Galois lattices** to model concepts. A concept's "size" is inversely related to its attributes and objects (e.g., the concept {lion, tiger} with attributes {feline, dangerous} is smaller than {cat, lion, tiger} with {feline}).
+   - Introduces **object concepts** (smallest concept containing an object) and **attribute concepts** (largest concept containing an attribute), structured via inclusion relations.
+
+2. **Graphetics/Graphemics:**
+   - **Word Clouds**: Combine statistical data visualization with aesthetics.
+   - **Chinese Writing**: Details the 39 fundamental strokes (e.g., *héng*, *shù*) forming characters, emphasizing structure and stroke order.
+   - **Writing Modes**: Classifies systems (pictographic, logographic, syllabic, abugida, abjad, alphabetic) and highlights flexibility (e.g., French uses symbols like `<K7>` syllabically).
+   - **Typographematics**: Defines *typographemes* as graphemes with typographic properties (set-width, body size, baseline) inherited from metal typesetting.
+   - **Kerning & Ligatures**: Explores how their absence can convey meaning (e.g., `AVA` vs. `AVA` distinguishing mathematical variables from names).
+   - **Gender-Neutral Writing**: Contrasts lexical methods (English’s Spivak pronouns: *e*, *em*) with graphemic solutions in French (·), German (*StudentInnen*), Spanish (@), and Greek (mixed suffixes).
+
+3. **Key Themes:**
+   - **Structural Analysis**: FCA’s mathematical rigor versus graphemics’ focus on script mechanics.
+   - **Cultural & Practical Adaptations**: Examples from typography and gender neutrality illustrate how writing systems evolve to meet social/technical needs.
+
+The document bridges theoretical semantics with applied graphemics, offering insights into language structure, typography, and modern linguistic challenges.
+

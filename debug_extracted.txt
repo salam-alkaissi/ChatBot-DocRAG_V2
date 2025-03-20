@@ -1,0 +1,1146 @@
+
+PAGE 1:
+TLFT
+Ethics in NLP
+Gábor Bella, Yannis Haralambous
+IMT Atlantique
+
+
+PAGE 2:
+Introduction
+• Ethics: studies human conduct in society and the world,
+and the rationality of our moral judgments.
+• Applied ethics: ethics applied to specific themes and fields
+• as opposed to metaethics (why does morality exist?) and normative ethics
+(general, high-level moral principles);
+• examples: business ethics, bioethics, ethics of personhood, engineering ethics,
+social ethics, environmental ethics, etc.
+• Engineering ethics:
+• a collapsing bridge, a Boeing aircraft, etc.;
+• should I develop/sell my face recognition tool to the police / army / secret services
+so that they can ‘fight terrorists’? (but I do not have a say in the definition of ‘terrorist’);
+• should I develop an AI tool that will lead to the laying off of thousands of people?
+(also a question of social ethics);
+• what about the carbon footprint of my code? (environmental ethics).
+Ethics in NLP
+
+
+PAGE 3:
+Ethics in NLP: Contents
+1. NLP and Privacy, Anonymisation
+2. Bias in Language Technology
+3. The Environmental Cost of NLP
+Some important topics not covered this time:
+• deliberate use of AI for ‘unethical’ purposes (war, discrimination);
+• plagiarism: by generative LLMs, by the users of them.
+Ethics in NLP
+
+
+PAGE 4:
+Ethics in NLP
+NLP and Privacy
+What Privacy is About
+Privacy Issues using NLP
+How NLP can Help in Protecting Privacy
+
+
+PAGE 5:
+Motivating Examples: Personal Data in NLP Tools
+• Train a machine learning model for a company on internal documents (e.g. spam filtering):
+• => depending on the ML technology, the personal emails could be extracted from the model.
+• Train a neural language model (‘predictive text’):
+• from user input on mobile phones: users may enter phone numbers, credit card numbers, names;
+• from internal or web-scraped documents: often contain addresses, emails, phone numbers, etc.;
+• => such content can be retrieved from language models even without ‘looking inside’
+(black-box prompting attacks).
+• Translate a sensitive document into another language using a third-party machine 
+translator:
+• a health record in order to allow it to be read by a doctor in another country;
+• a legal contract between parties who do not speak the same language, etc.;
+• => a third party, under a different jurisdication, gains access to sensitive personal data.
+• Reuse personal data for secondary purposes:
+• data analysis on the customer DB of a webshop;
+• ‘secondary use’ of patient health records for medical research;
+• => again, third parties gain access to personal, potentially sensitive data, via unforeseen use.
+Ethics in NLP
+
+
+PAGE 6:
+Privacy in General
+• Privacy = having control over the access of others to oneself (Fried, 1984).
+• A freedom of the individual from interference or intrusion, the right ‘to be left alone’ 
+(Warren and Brandeis, 1890).
+• Possible cases of privacy violation:
+• intrusion into private affairs;
+• public disclosure of embarrassing private facts, blackmail;
+• silent discrimination by bodies of power (no credit from bank, excessive controls from the state, etc.);
+• appropriation of name and likeness.
+• Right to privacy: a question as much legal as ethical. The legal framework is different,
+however, in every country.
+• We will use the EU 2016/679 General Data Protection Regulation (GDPR)
+as a proxy for ethical requirements w.r.t. privacy.
+Ethics in NLP
+
+
+PAGE 7:
+Definitions (Summary)
+According to the GDPR:
+• Identifiable natural person: any living individual.
+• Personal data: any information relating to an identified or identifiable natural person 
+(‘data subject’).
+• Sensitive data: personal data revealing racial or ethnic origin, political opinions, 
+religious or philosophical beliefs, trade-union membership, genetic data, biometric 
+data processed solely to identify a human being, health-related data, data concerning 
+a person’s sex life or sexual orientation.
+• Processing: any operation performed on personal data, whether or not by automated 
+means, such as collection, recording, organisation, structuring, storage, adaptation or 
+alteration, retrieval, consultation, use, disclosure by transmission, dissemination or 
+otherwise making available, alignment or combination, restriction, erasure, or 
+destruction.
+• Data controller: natural or legal person, public authority, agency or other body which, 
+alone or jointly with others, determines the purposes and means of the processing of 
+personal data.
+• Data processor: a natural or legal person, public authority, agency or other body which 
+processes personal data on behalf of the controller.
+Ethics in NLP
+A person admitted to 
+a hospital.
+Example:
+All data recorded by 
+the hospital about the 
+person.
+All data about the 
+health of the person
+(e.g. condition, 
+symptoms).
+Everything that doctors, 
+nurses, admin. staff, 
+and information 
+systems do with data.
+The hospital itself.
+A company contracted
+by the hospital to do 
+NLP on health records.
+
+
+PAGE 8:
+Principles of the GDPR (Summary)
+According to the GDPR, the obligations of data processors and controllers:
+• Lawful, fair, and transparent processing. The burden of proof is on the data controller and processor.  
+Access to personal data is based on consent, legal obligation, the subject’s vital interest, public interest, etc.
+• Purpose limitation: collected for specified, explicit and legitimate purposes and not further processed in a 
+manner that is incompatible with those purposes.
+• Data minimisation: limited to what is necessary in relation to the purposes for which they are processed.
+• Accuracy: accurate and, where necessary, kept up to date.
+• Storage limitation: kept in a form which permits identification of data subjects for no longer than is 
+necessary for the purposes for which the personal data are processed.
+• Integrity and confidentiality: ensures appropriate security of the personal data, including protection against 
+unauthorised or unlawful processing and against accidental loss, destruction or damage.
+Ethics in NLP
+
+
+PAGE 9:
+Identifiers
+• In respect of the principle of data minimisation, data should only contain
+the amount of personally identifiable information that is strictly necessary
+for the goal of data processing.
+• Identifiable natural person: can be identified, directly or indirectly,
+in particular by reference to an identifier such as:
+• a name, an identification number, location data, an online identifier;
+• or to one or more factors specific to the physical, physiological, genetic, mental, economic,
+cultural or social identity of that natural person.
+• Attributes may identify a person in combination,
+e.g. first name + shirt colour in this classroom.
+• Minimising data is not so easy after all!
+Ethics in NLP
+DIRECT IDENTIFIERS
+INDIRECT IDENTIFIERS
+
+
+PAGE 10:
+De-Identification, Anonymisation, Pseudonymisation
+• De-identification of a dataset: removal of direct identifiers.
+• Anonymisation of a dataset: removal of all direct and indirect identifiers.
+• Re-identification or deanonymisation: finding out to whom a previously de-identified
+or anonymised dataset refers (which is what we want to avoid).
+• Pseudonymisation of a dataset: replace identifiers by single-use, meaningless pseudonyms
+(e.g. unique random numbers). Using a lookup table maintained by a trusted third party,
+re-identification becomes possible (ex.: life-threatening disease discovered in research).
+• Full anonymisation can be very hard. There are various techniques,
+but there is no general recipe, as the success depends on the data and the context.
+• Example: is age alone:
+• a direct identifier? No.
+• an indirect identifier? No.
+• But it can be, depending on the context: if the number of subjects is low,
+or if the age is extreme (110 years).
+• Sweeney (2002) found that 87% of the population in the United States can be uniquely 
+identified with three indirect identifiers: gender, date of birth, and five-digit zip code.
+Ethics in NLP
+
+
+PAGE 11:
+Example: Data Minimisation
+• A company wants to perform data analysis on its salaries;
+• the analysts (internal or external) should not be able to find out who is earning how much.
+Ethics in NLP
+Employee ID
+Name
+Gender
+Birth Date
+Service
+Position
+Salary/year
+0001
+John Abrams
+M
+1/4/1980
+Marketing
+Analyst
+$80,700
+0002
+Mary Beck
+F
+3/5/2001
+Development
+Junior Dev.
+$41,000
+…
+…
+…
+…
+…
+…
+…
+1499
+Stephen Young
+M
+5/10/1986
+Development
+Senior Dev.
+$75,000
+1500
+Jenny Zach
+F
+12/12/1970
+Management
+CEO
+$195,000
+• Direct identifiers are removed, pseudonyms are introduced.
+• Position could identify a person using the company website => aggregation.
+• Age and service can be sufficient if they are provided, e.g., on LinkedIn => aggregation. 
+• We assume a certain level of gender balance within the company => gender is not identifying.
+1980–1990
+2000–2010
+1980–1990
+1970–1980
+35418
+22126
+45111
+90841
+Analyst
+Developer
+Developer
+Manager
+
+
+PAGE 12:
+• Train a machine learning model for a company on internal documents (e.g. spam filtering):
+• => depending on the ML technology, the personal emails could be extracted from the model.
+• Train a neural language model (‘predictive text’):
+• from user input on mobile phones: users may enter phone numbers, credit card numbers, names;
+• from internal or web-scraped documents: often contain addresses, emails, phone numbers, etc.;
+• => such content can be retrieved from language models even without ‘looking inside’
+(black-box prompting attacks).
+• Translate a sensitive document into another language using a third-party machine 
+translator:
+• a health record in order to allow it to be read by a doctor in another country;
+• a legal contract between parties who do not speak the same language, etc.;
+• => a third party, under a different jurisdication, gains access to sensitive personal data.
+• Reuse personal data for secondary purposes:
+• ‘secondary use’ of patient health records for medical research;
+• analysis of a company’s customer DB to gain insights;
+• => again, third parties gain access to personal, potentially sensitive data, via unforeseen use.
+Ethics in NLP
+Anonymisation
+Motivating Examples: Personal Data in NLP Tools
+
+
+PAGE 13:
+Exercise: Anonymisation of Natural-Language Text
+Example use case: a medical discharge report, to be used for research.
+The patient was admitted and underwent celiac and superior mesenteric artery 
+angiography which demonstrated a patent celiac and superior mesenteric artery 
+with normal branching pattern. In addition a small ventral hernia was noted 
+upon abdominal exploration within a previous surgical incision. On 10-02-94 
+the patient was brought to the operating room where he underwent exploratory 
+laparotomy and left hepatectomy and cholecystectomy by Dr. Duhenile. The 
+patient tolerated the procedure well with a 2000 cc. blood loss and was 
+autotransfused two units of blood. In the postoperative course Mr. Fyfe did 
+surprisingly well given his age (88) and underlying medical condition. He 
+remained in the Intensive Care Unit for two days but was hemodynamically 
+stable throughout. Both of his Jackson-Pratt drains were removed without 
+incident. By postoperative day 7, Mr. Fyfe was tolerating a regular ADA 1800 
+kilocalorie diet without difficulty with all of his tubes and drains removed. 
+He is being transferred back to the Per Naplesspecrycet Hospital in stable 
+condition on the same medications which he was on preoperatively.
+Ethics in NLP
+
+
+PAGE 14:
+Exercise: Anonymisation of Natural-Language Text
+Direct identifiers: person names, dates, institutions.
+The patient was admitted and underwent celiac and superior mesenteric artery 
+angiography which demonstrated a patent celiac and superior mesenteric artery 
+with normal branching pattern. In addition a small ventral hernia was noted 
+upon abdominal exploration within a previous surgical incision. On 10-02-94
+the patient was brought to the operating room where he underwent exploratory 
+laparotomy and left hepatectomy and cholecystectomy by Dr. Duhenile. The 
+patient tolerated the procedure well with a 2000 cc. blood loss and was 
+autotransfused two units of blood. In the postoperative course Mr. Fyfe did 
+surprisingly well given his age (88) and underlying medical condition. He 
+remained in the Intensive Care Unit for two days but was hemodynamically 
+stable throughout. Both of his Jackson-Pratt drains were removed without 
+incident. By postoperative day 7, Mr. Fyfe was tolerating a regular ADA 1800 
+kilocalorie diet without difficulty with all of his tubes and drains removed. 
+He is being transferred back to the Per Naplesspecrycet Hospital in stable 
+condition on the same medications which he was on preoperatively.
+Ethics in NLP
+
+
+PAGE 15:
+Exercise: Anonymisation of Natural-Language Text
+Direct identifiers: person names, dates, institutions.
+Possible indirect identifiers: gender (pronouns), age, condition (if rare).
+The patient was admitted and underwent celiac and superior mesenteric artery 
+angiography which demonstrated a patent celiac and superior mesenteric artery 
+with normal branching pattern. In addition a small ventral hernia was noted 
+upon abdominal exploration within a previous surgical incision. On 10-02-94
+the patient was brought to the operating room where he underwent exploratory 
+laparotomy and left hepatectomy and cholecystectomy by Dr. Duhenile. The 
+patient tolerated the procedure well with a 2000 cc. blood loss and was 
+autotransfused two units of blood. In the postoperative course Mr. Fyfe did 
+surprisingly well given his age (88) and underlying medical condition. He
+remained in the Intensive Care Unit for two days but was hemodynamically 
+stable throughout. Both of his Jackson-Pratt drains were removed without 
+incident. By postoperative day 7, Mr. Fyfe was tolerating a regular ADA 1800 
+kilocalorie diet without difficulty with all of his tubes and drains removed. 
+He is being transferred back to the Per Naplesspecrycet Hospital in stable 
+condition on the same medications which he was on preoperatively.
+Ethics in NLP
+
+
+PAGE 16:
+Exercise: Anonymisation of Natural-Language Text
+Direct identifiers: person names, dates, institutions.
+Possible indirect identifiers: gender (pronouns), age, condition (if rare).
+Potential false positives: quantities, device names, etc.
+The patient was admitted and underwent celiac and superior mesenteric artery 
+angiography which demonstrated a patent celiac and superior mesenteric artery 
+with normal branching pattern. In addition a small ventral hernia was noted 
+upon abdominal exploration within a previous surgical incision. On 10-02-94
+the patient was brought to the operating room where he underwent exploratory 
+laparotomy and left hepatectomy and cholecystectomy by Dr. Duhenile. The 
+patient tolerated the procedure well with a 2000 cc. blood loss and was 
+autotransfused two units of blood. In the postoperative course Mr. Fyfe did 
+surprisingly well given his age (88) and underlying medical condition. He
+remained in the Intensive Care Unit for two days but was hemodynamically 
+stable throughout. Both of his Jackson-Pratt drains were removed without 
+incident. By postoperative day 7, Mr. Fyfe was tolerating a regular ADA 1800
+kilocalorie diet without difficulty with all of his tubes and drains removed. 
+He is being transferred back to the Per Naplesspecrycet Hospital in stable 
+condition on the same medications which he was on preoperatively.
+Ethics in NLP
+
+
+PAGE 17:
+Exercise: Anonymisation of Natural-Language Text
+A possible anonymisation result using deletion and generalisation operations.
+Some of these operations can only be done using domain knowledge
+(e.g. ventral hernia  is-a  hernia, Jackson-Pratt ∉PatientName).
+The patient was admitted and underwent celiac and superior mesenteric artery 
+angiography which demonstrated a patent celiac and superior mesenteric artery 
+with normal branching pattern. In addition a small ---hernia--- was noted 
+upon abdominal exploration within a previous surgical incision. On xx-xx-94
+the patient was brought to the operating room where he/she underwent 
+exploratory laparotomy and left hepatectomy and cholecystectomy by Dr. YYY. 
+The patient tolerated the procedure well with a 2000 cc. blood loss and was 
+autotransfused two units of blood. In the postoperative course PATIENT did 
+surprisingly well given his/her age (60-90) and underlying medical condition. 
+He/she remained in the Intensive Care Unit for two days but was 
+hemodynamically stable throughout. Both of his/her Jackson-Pratt drains were 
+removed without incident. By postoperative day 7, PATIENT was tolerating a 
+regular ADA 1800 kilocalorie diet without difficulty with all of his/her
+tubes and drains removed. He/she is being transferred back to the HOSPITAL in 
+stable condition on the same medications which he/she was on preoperatively.
+Ethics in NLP
+
+
+PAGE 18:
+Named Entity Recognition for Anonymisation
+• Classic approach for finding direct and indirect identifiers in NL text:
+Named Entity Recognition (NER);
+• typically implemented as a sequence labelling classification task:
+… Later Mr. Fyfe was transferred to Mount Sinai Hospital where …
+• state of the art: supervised finetuning over a large neural language model;
+• however:
+• NER is usually a domain-specific task, LLMs are usually not trained on domain corpora;
+• anonymisation does not allow mistakes, recall must be very close to 100%:
+too zealous anonymisation is better than forgetting about some identifiers;
+• for these reasons, a state-of-the-art statistical/neural ML approach is often combined
+with rule-based and knowledge-based approaches.
+Ethics in NLP
+I-PER
+0
+B-PER
+0
+0
+B-ORG
+I-ORG
+I-ORG
+0
+0
+
+
+PAGE 19:
+Domain-Specific Named Entity Recognition
+• NER is typically a domain-specific task. Depending on the domain, the entity types
+to be recognised will be different.
+• Texts show extreme variations in length, orthography, lexicon, grammar, register, and style.
+• Medical records:
+• medium-length (up to a page);
+• specialised medical language;
+• person names, IDs, institutions, age, date, disease names, procedure names, etc.;
+• pronouns and gender-specific morphemes would rather be found via part-of-speech tagging.
+• Legal documents:
+• long pieces of text (several pages);
+• specialised legal language;
+• much more open-ended in terms of direct and indirect identifiers.
+• Tweets:
+• very short pieces of text;
+• non-standard orthography and grammar, #hashtags, @identifiers, acronyms, typos, etc.;
+• anything could theoretically appear.
+• The NER model needs to be built/trained/finetuned to the domain and task.
+Reuse across domains and tasks is partial at best.
+Ethics in NLP
+
+
+PAGE 20:
+To Remember
+• Anonymisation of NL data is far from trivial, it often requires domain knowledge
+and a deep understanding of the data.
+• You are likely to need to use ML-based methods, but these are never 100% reliable.
+• Yet, you are legally required to handle personal data responsibly, especially in the EU,
+where violations are sanctioned.
+• In case you cannot guarantee the protection of personal data, it is better to avoid
+its collection altogether.
+Ethics in NLP
+
+
+PAGE 21:
+Ethics in NLP
+Bias in NLP Technology
+
+
+PAGE 22:
+Some Well-Known Motivating Examples from NLP
+Machine translation: implicit 
+gender assumptions introduced
+by the statistical/neural MT system.
+Ethics in NLP
+MFLC Vera: Exploring and Mitigating Gender Bias in GloVe Word Embeddings
+Word embeddings: biased 
+vector space w.r.t gender and race.
+Helm, Bella et al. (2024):Diversity and language technology: 
+how language modeling bias causes epistemic injustice. 
+Ethics in Information Technology.
+
+
+PAGE 23:
+Some Well-Known Motivating Examples from NLP
+Ethics in NLP
+Microsoft’s Tay.ai: in 2016, in less than
+16 hours after its release, the chatbot 
+has learnt massively racist behaviour 
+from online users and had to be shut 
+down by Microsoft.
+All of these examples show behaviours that were not intended and not foreseen
+by engineers, whose intentions were undoubtedly positive.
+Koenecke, A. et al. (2020). Racial disparities in automated speech 
+recognition. Proceedings of the National Academy of Sciences.
+Speech recognition: systems were trained 
+from audiobooks, typically voiced by 
+white males. This leads to worse 
+performance on speech by other social 
+groups or races.
+
+
+PAGE 24:
+Definitions: Bias
+• Bias in statistics: a systematic error of an estimator T with respect to a parameter 𝜃:
+bias 𝑇, 𝜃= E መ𝜃−𝜃
+• Bias as a value-based notion was first studied w.r.t. humans:
+• cognitive bias: systematic patterns of deviation from norm or rationality in judgment,
+but also seen as rational deviations from logical thought;
+• decision theory: objectives are quantified by weights, defined by humans 
+who are subject to motivational biases (choosing weights to obtain the desired outcome);
+• ethics: most often studied with respect to social groups.
+• Bias of an information system: many definitions, such as:
+• Friedman & Nisselbaum, 1996: ‘a system that discriminates unfairly and systematically’.
+• Consensus across the board: zero bias is generally impossible, neither in humans nor in AI.
+• What do we even mean by ‘zero bias’ (𝜃)? It is hypothesised based on fairness.
+Ethics in NLP
+
+
+PAGE 25:
+Definitions: Fairness
+• Fairness: harder to define. There are much-cited surveys on possible definitions:
+• Verma, S., & Rubin, J. (2018, May). Fairness definitions explained.
+International Workshop on Software Fairness;
+• Arvind Narayanan. 2018. FAT* tutorial: 21 fairness definitions and their politics. New York, USA.
+• Fairness is not (always) equality or ‘demographic parity’.
+Lack of parity may be due to intrinsic and accepted differences in society.
+• A central notion is that of harm: are individuals or social groups harmed due to bias?
+Ethics in NLP
+
+
+PAGE 26:
+Definitions: Harm
+• It is always implied that unfairness has negative consequences on individuals
+and social groups, which we call harm.
+• Bias causes systematic harm.
+• Allocational harm: resources are distributed unevenly or unfairly.
+Examples:
+• you do not get a job because you were misclassified as less apt because of your name or gender;
+• a bank does not give you credit because its trained algorithm discriminates against certain
+addresses or names;
+• the state classifies you as an abuser of unemployment benefit because of your lower social status.
+• Representational harm: social groups or individuals are stigmatised or stereotyped.
+Examples:
+• a machine translator makes gender assumptions based on profession;
+• certain races are underrepresented in media, or only in stereotypical ways.
+Ethics in NLP
+
+
+PAGE 27:
+Ethical Dilemmas around AI Bias
+• Whose fault is a biased language tool (model/classifier/etc.)? Who should fix it?
+• Legislator, politician: ‘AI is technology, if AI discriminates, the tech company must fix it.’
+• Company CEO: ‘We will fix it if law orders us to do so, or if we have a market incentive.’
+• Engineer: ‘Technology is neutral. Bias in my ML model is embedded in my input corpus,
+which reflects bias in society itself. Therefore, bias is not my fault, and I should not blamed for it.’
+• How to measure bias?
+• What is the unbiased ‘ideal’? Is it 50/50 men/women? What about race, religion, language?
+• How much bias is acceptable?
+• How to prevent it?
+• How to fix it?
+• Pull the plug (Tay.ai)?
+• invest $$$$$$ in an army of data annotators?
+• massage the input corpus until ‘he’ and ‘she’ appear 50/50% of time?
+(data deletion or augmentation, synthetic data => decrease of overall quality);
+• post-process results?
+• ban wokism and pretend the problem does not exist?
+• …?
+• Let’s try to look for answers to these questions.
+Ethics in NLP
+
+
+PAGE 28:
+Types of Bias in AI
+• The ethical framing of bias in AI is interested in fairness and harm w.r.t. social groups.
+Bias is often classified according to the target group harmed: gender bias, racial bias, social class bias, 
+ethnic bias, language bias (against speakers of a language), etc.
+Ethics in NLP
+• Another classic typology is based
+on the sources of bias. While engineers 
+hope for a clear distinction between 
+societal and technical sources of bias,
+this is not always possible. Example: 
+ImageNet predominantly contains photos 
+from Anglo-Saxon countries.
+• A finer-grained classification 
+distinguishes the major
+components of an AI-based
+solution and reveals
+the different sources of technical
+and non-technical biases.
+Lopez, Paola (2021) : Bias does not equal bias: A socio-technical typology of bias in data-based algorithmic systems, Internet Policy Review.
+input
+algorithm
+output
+society
+context
+of use
+
+
+PAGE 29:
+Types of Bias in AI
+Ethics in NLP
+• Historical bias
+• Representation bias
+• Measurement bias
+• Algorithmic
+or learning bias
+• Evaluation bias
+• Aggregation bias
+• Deployment bias
+Mehrabi, N. et al. (2021). A survey on bias and fairness in machine learning. ACM computing surveys (CSUR), 54(6), 1-35.
+Suresh, H., & Guttag, J. (2021). A framework for understanding sources of harm throughout the machine learning life cycle.
+BIASED SPLIT
+
+
+PAGE 30:
+Ethics in NLP
+Syntactic features of a language vs perplexity of Transformer and LSTM 
+output. Examining the Inductive Bias of Neural Language Models with 
+Artificial Languages (White & Cotterell, ACL-IJCNLP 2021).
+Type
+Description
+Example
+Historical
+In people’s minds, in content generated by 
+people.
+Web-crawled texts used for word embeddings or MT reflect inherent biases
+in society.
+Representation
+Training data collection
+is not representative of the entire population.
+Images in ImageNet come mostly from a few countries, and are thus not 
+representative of most cultures.
+Measurement
+Features in training data were obtained by 
+measurement methods that misrepresent the 
+original data.
+More frequent police controls against certain populations produce data
+that suggests that such people are more likely to commit crimes.
+(Controlled by the police ≠ criminal.)
+Algorithmic
+or Learning
+The algorithm (based on learning or not) 
+favours certain outcomes.
+An empirically observed inbuilt preference in the Transformer towards
+languages with certain syntactic structures.
+ImageNet contents
+per country of origin. 
+(Mehrabi et al., 2021).
+
+
+PAGE 31:
+Types of Bias in AI
+Ethics in NLP
+Type
+Description
+Example
+Evaluation
+Data used for evaluation is not balanced.
+Dark-skinned women only 4.4% in the IJB-A face recognition benchmark 
+dataset. Small evaluation data can lead to imbalance in train/test split.
+Aggregation
+Aggregation of heterogeneous data leads
+to false conclusions.
+Simpson’s Paradox: UC Berkeley admission data appears to be biased against
+women, yet per-department data is balanced. This is due to women having
+applied to departments with lower admission rates. Longitudinal fallacy: Reddit
+posts appear to decrease in length over time. This, however, is due to new age
+groups having joined Reddit over time.
+Deployment
+Use of the system in a different context leads
+to unexpected behaviour.
+Watson Health was trained in the US, its subsequent deployment in Europe led 
+to much weaker and biased results.
+
+
+PAGE 32:
+Approaches for Addressing Bias
+Ethics in NLP
+• Preventive measures:
+• Value-sensitive design (Friedman & Hendry, 2019) according to AI for Social Good (Floridi, 2020):
+• human values are taken into account at design time in a principled and comprehensive manner;
+• AI4SG: ‘the design, development, and deployment of AI systems in ways that:
+• prevent, mitigate, or resolve problems adversely affecting human life
+and/or the wellbeing of the natural world, and/or
+• enable socially preferable and/or environmentally sustainable developments’;
+• examples: privacy by design, excluding certain features from training (sex, postcode),
+training with fairness as an explicit (quantified) goal.
+• Data statements (Bender & Friedman, 2018), datasheets (Gebru et al., 2021): 
+• all datasets have to be described in detail by their creators, according to:
+selection rationale, language variety, domain, speaker demographic,
+annotator demographic, speech situation, provenance, etc.;
+• this fosters the understanding by engineers of the data used for training, its inherent biases,
+and its limitations of applicability.
+• Post-hoc mitigation:
+• ‘Debiasing’ of datasets or already trained models.
+
+
+PAGE 33:
+Value-Sensitive Design of Multilingual Lexicons: OMW vs UKC
+Ethics in NLP
+• Example: in the Open Multilingual Wordnet (OMW),
+lexicons of about 800 languages are interconnected via the English lexicon.
+• Words that have no English equivalent are inaccurately represented:
+for example, Japanese and Swahili both have separate words for ‘raw rice’ 
+and ‘cooked rice’, yet they are all mapped to the English ‘rice’.
+• Thus, the resource erroneously states that the Japanse ‘raw rice’ translates 
+into the Swahili ‘cooked rice’.
+• Due to the knowledge model, OMW is biased towards English.
+English, French, Italian, Chinese, Hindi, 
+Tamil, Malayalam, Hungarian, Mongolian
+
+
+PAGE 34:
+Ethics in NLP
+•
+The Universal Knowledge Core (UKC) maps lexicons together through a supra-lingual ‘interlingua’
+where lexical meanings from any language can be represented. No language is privileged by the data structure.
+•
+‘Rice’, ‘raw rice’, and ‘cooked rice’ are all represented in the interlingua.
+•
+GAPs indicate lexical untranslatability.
+Value-Sensitive Design of Multilingual Lexicons: OMW vs UKC
+
+
+PAGE 35:
+‘Debiasing’
+Ethics in NLP
+• The term ‘debiasing’ is inaccurate and (some would say deliberately) misleading:
+there is consensus (in philosophy, cognitive science, AI) that bias-free systems (or humans)
+cannot exist. We mean to reduce bias.
+• At this point, you understand that debiasing is more than just an engineering problem.
+• Technical bias can and should be addressed in terms of system/corpus engineering.
+• Societal and socio-technical bias: even if the engineer is not directly responsible for it,
+societal/commercial pressure may impose intervention.
+• For many, it is not acceptable if AI mirrors human biases, it is expected to live up to an ideal,
+to ‘show a good example’ in terms of race and gender equality, etc.
+• But how does one define the ideal? There is no consensus in society, it is an open question.
+• Should AI be allowed free speech? There is no consensus.
+
+
+PAGE 36:
+‘Debiasing’ (Large) Language Models
+Ethics in NLP
+• These problems originate from the distribution of web-crawled training data.
+They reflect societal bias, as it is filtered through the language of the web.
+• Goal: reduce specific types of bias in language model predictions:
+• gender bias in terms of grammar (language-dependent): m/f pronouns, gender-inflected nouns, etc.;
+• gender or racial stereotypes in terms of semantic proximity (largely language-independent).
+• Main approaches:
+• upstream: debias the training corpora;
+• midstream: debias the training process;
+• downstream: debias the trained model.
+Language Model
+Training
+Training 
+Corpus
+Trained
+Model
+Fine-
+tuning
+Finetuned
+Model
+Predic-
+tion
+UPSTREAM
+MIDSTREAM
+DOWNSTREAM
+
+
+PAGE 37:
+Upstream Debiasing
+Ethics in NLP
+• Downsampling: automatically remove data until balance is achieved.
+• Upsampling: automatically duplicate data until balance is achieved.
+• Counterfactual Data Augmentation: swap bias attribute words: he/she, husband/wife, etc.;
+The nurse entered the room and she put on her mask => The nurse entered the room and he put on his mask
+I passed by a church => I passed by a mosque
+• Identification of biased sentences: using word lists and dictionary definitions.
+• Limitations:
+• for closed-class words (e.g. pronouns), word lists are efficient, for open-class words
+(nouns, verbs, adjectives, adverbs) it is not possible to be exhaustive;
+• simple to implement for certain languages such as English, harder with inflecting languages:
+l’infirmier/ère est entrée dans la salle et il/elle a mis son masque => morpho-syntactic analysis needed!;
+• polysemy and context-dependence: ‘He’ also means helium, ‘church’ can mean the building
+or the institution, also unintended semantic consequences (the mosque is dedicated to Saint Stephen);
+• very hard to apply when the switch is not binary (he/she), as in the case of languages or cultures;
+• conceptual issue: all these methods suppose that the engineer has perfect prior knowledge
+of the types of bias that exist and how they are manifested => solutions are necessarily incomplete.
+
+
+PAGE 38:
+Midstream Debiasing
+Ethics in NLP
+Dropout
+• originally a technique used to avoid overfitting: in each training cycle, do not update x% of the weights;
+• hypothesis: increasing dropout on Attention weights reduces bias, by preventing the learning
+of ‘undesirable associations between words’;
+• seems less effective than more focused techniques.
+
+
+PAGE 39:
+Downstream Debiasing
+Ethics in NLP
+Iterative Nullspace Projection
+•
+Motivation: in an embedding vector space, we want to delete certain types of information.
+Such information is hypothesised to be salient in certain dimensions, but we do not have prior knowledge
+on which or how many dimensions are affected.
+•
+Goal: identify the dimensions and suppress them by projecting them to nullspace.
+•
+On the whole, the rest of the embedding space should not be negatively affected.
+•
+Method:
+1.
+Let us suppose that a vector space 𝑋encodes an attribute 𝑧(e.g. gender)
+and that we have training samples 𝑋𝑧⊂𝑋(gender-specific words);
+2.
+for all 𝑥∈𝑋𝑧, train a linear classifier 𝑊1 such that 𝑊1𝑥predicts 𝑧from 𝑥;
+3.
+compute and apply a corresponding projection 𝑃1 that reduces bias in 𝑋:
+𝑊1(𝑃1𝑥) = 0 for any 𝑥;
+4.
+iteratively repeat steps 2+3 until 𝑊𝑛cannot efficiently predict 𝑧anymore;
+5.
+the ‘guarding’ (debiasing) function 𝑔for 𝑋is then
+𝑔𝑋= 𝑃1𝑃2 … 𝑃𝑛.
+•
+For example, to remove gender from a word vector space, 𝑊𝑖are trained
+on typical gender-specific word pairs, such as (‘he’, ‘she’) or (‘Mary’, ‘John’).
+Ravfogel et al. (2020): Null It Out: Guarding Protected Attributes by Iterative Nullspace Projection. 
+Bias towards a ‘triangle’ attribute is
+predicted by the vector W. The vector x
+is projected onto the nullspace of W 
+(orthogonal to W), removing the bias
+from it.
+
+
+PAGE 40:
+Downstream Debiasing
+Ethics in NLP
+Self-debiasing: modification of the decoding algorithm.
+• Self-diagnosis: detection of biased output, can the LLM recognise its own bias?
+‘I am going to kill you!’
+Question: does the above sentence contain a threat? Answer: [Yes|No]
+•
+the sentence is self-diagnosed to be biased if P Yes prompt > P No prompt ;
+•
+attributes: a threat / sexually explicit language / swear words or other profane language / negative
+or hateful language targeting someone because of their identity / very hateful, aggressive language;
+•
+self-diagnosis was found to be effective in more recent LLMs: acc = 72.7% in GPT-2 XL and 87.3% in T5.
+• Self-debias:
+The following text contains a threat:
+x = I am going to […]
+•
+for the prefix x and all possible continuation words w, the probability of w P 𝑤𝑥is modified
+in proportion to P 𝑤𝑥−P 𝑤prompt , where generally P 𝑤prompt > P(𝑤|𝑥) for ‘toxic’ words
+as the LM is encouraged by the prompt to generate them;
+•
+thus we decrease the probability of generating ‘toxic’ words.
+• Limitations:
+•
+use is limited to NL generation tasks, e.g. cannot be used to debias downstream finetuned tasks;
+•
+only LLMs have the power to understand prompts well enough.
+Schick et al., 2021. Self-Diagnosis and Self-Debiasing: A Proposal for Reducing Corpus-Based Bias in NLP. TACL.
+
+
+PAGE 41:
+Downstream Debiasing
+Ethics in NLP
+Machine translation:
+• In MT, debiasing is a much harder task, as it needs to be done in two languages in parallel,
+keeping sentence pairs perfectly aligned in meaning.
+• ‘The writer is old’ is not gendered in English, ‘L’écrivain est vieux’ is gendered in French.
+• Tomalin et al. (2021) found downstream finetuning with simple synthetic sentences much more effective
+than upstream upsampling or downsampling:
+• train a MT on the entire (biased) corpus;
+• finetune on a balanced synthetic corpus with sentence pairs such as:
+The [PROFESSION] finished [his/her] work.
+The [ADJECTIVE] [man/woman] finished [his/her] work.
+•
+profession–gender and adjective–gender pairs are selected from a predefined list of biased associations.
+Tomalin et al., 2021. The practical ethics of bias reduction in machine translation: why domain adaptation is better than data debiasing.
+
+
+PAGE 42:
+Lessons Learnt and Open Questions about Bias
+Ethics in NLP
+• There is no consensus of what constitutes bias, discrimination, hate speech, etc.,
+and this is not likely to change.
+• Certain types of bias have been widely covered (gender, race), others much less
+(languages, dialects, social groups).
+• Identification of bias has been rudimentary (based on predefined word lists, concepts,
+or the LM’s own judgment).
+• Risk of low precision: overzealous debiasing leading to certain words
+disappearing from the LM’s output, independently of meaning or context.
+• Risk of low recall: more subtle forms of discrimination are not detected.
+• Engineers need to commit to an ethical stance and work according to it right from design.
+• The ethical stance and the features built into systems that follow from it
+(e.g. taboo words, filters, etc.) must be made explicit.
+
+
+PAGE 43:
+Ethics in NLP
+The Energy Consumption
+of Large Language Models
+
+
+PAGE 44:
+Energy Consumption
+Ethics in NLP
+• Framing: environmental ethics, global warming due to CO2 emissions.
+• Urgent need to decrease energy consumption:
+• the <+2°C goal of the Accord de Paris (2015) is now illusory, we are heading towards +3°C and beyond,
+• for comparison: in the last Ice Age, global temperatures were 4–5°C below the 20th century average.
+• Cons:
+• the size of LLMs has been increasing exponentially, and size is proportional to energy consumption;
+• worldwide adoption of LLMs is exponential (at least), also driven by the hype.
+• Pros:
+• AI can be used for our benefit (research, medicine, etc.), conterbalancing the cons;
+• we mostly reuse LLMs for finetuning and prediction, which is less costly.
+• How much of a problem is LLM energy consumption? We need to quantify it.
+• Other crucial environmental issues we will not consider this time:
+scarcity of rare-earth metals, pollution due to non-recycling, etc.
+
+
+PAGE 45:
+Basic Notions: Energy, Power, CO2
+Ethics in NLP
+• Energy is measured in Joules.
+• Power = rate of energy transfer, 1J/1s = 1 Watt.
+• Energy is often expressed in kWh = 1,000 Wh = 3,600,000 J.
+• CO2 emission is proportional to the energy consumed,
+but the factor heavily depends on the energy mixture
+(types of power plants used).
+2022 CO2 emissions by electricity production
+per EU country (g of CO2 per kWh of energy). 
+https://www.statista.com/statistics/1291750/
+carbon-intensity-power-sector-eu-country/
+USA
+France
+Germany
+
+
+PAGE 46:
+Evaluating the Consumption of Neural Language Models
+Ethics in NLP
+• We commonly measure in CO2eq (CO2 equivalent) to account for the emission of multiple
+kinds of greenhouse gases.
+• From energy to CO2eq: 85 g/kWh in France, 390 g/kWh in the USA, 635 g/kWh in Poland.
+• From running time to energy: if we know the running time and the power consumption
+of the computer or data centre. Following (Strubell et al., 2019):
+𝐸= PUE 𝑃CPU + 𝑃RAM + 𝑃GPU × 𝑡
+• where PUE is the global averge power usage effectiveness (roughly a multiplier of 1.58), 
+𝑡is the time of running, and the 𝑃are the respective power consumptions of components.
+Proportion of GPU energy consumption w.r.t. CPU and RAM. 
+GPUs amount to about 60% of total energy consumption during training.
+LFW Anthony et al. (2020): Carbontracker: Tracking and Predicting the Carbon Footprint of 
+Training Deep Learning Model. ICML.
+
+
+PAGE 47:
+Evaluating the Consumption of Neural Language Models
+Ethics in NLP
+• What we typically do with LLMs (and neural AI models in general):
+• design them:
+• tweaking, running experiments (hard to quantify),
+• neural architecture search is an automated but very costly approach to NN design;
+• train them:
+• hyperparameter tuning, until optimal performance is achieved,
+• multiple training epochs,
+• retraining on more/better data;
+• finetune them: a lightweight form of further training;
+• use them: inference ≈ one ‘forward pass’ in the neural network.
+• inference << fine-tuning << training << neural architecture search;
+• on the other hand, training w/ NAS of ChatGPT is only done by OpenAI,
+but inference is used by millions of us every day.
+
+
+PAGE 48:
+Estimating the Consumption of Neural Language Models
+Ethics in NLP
+• If running time is not available: estimate from network size and processing speed.
+Time: 𝑡=
+ൗ
+FPO FLOPS
+• Processing speed of GPUs: FLOPS, or the number of Floating Point Operations Per Second,
+(typically additions and multiplications).
+Number of floating-point operations: FPO ∝𝐹× 𝐷2 × 𝑇
+• 𝐹: cost of a single forward pass, 𝐷: number of tokens, 𝑇: overhead of training. 
+𝐷2 mostly because the attention mechanism in the Transformer has a quadratic complexity.
+The overhead of training: 𝑇≈4 × 𝐸× 𝐻, 
+• 𝐸: epochs, 𝐻: hyperparameter tuning experiments, 4: overhead due to backpropagation.
+The cost of a single forward pass: 𝐹≈2 × 𝑝
+• 𝑝: number of network parameters (e.g. 175 billion for GPT-3):
+for a single neuron 𝑦𝑗in layer 𝑗, 𝑦𝑗= σ𝑖=1
+𝑛
+𝑤𝑖𝑗𝑥𝑖+ 𝑏𝑗, which amounts to 2𝑛+ 1 operations.
+
+
+PAGE 49:
+Estimating the Consumption of Neural Language Models
+Ethics in NLP
+Let us recapitulate:
+FPOtrain ∝𝐹× 𝐷× 𝑇= 2𝑝× 𝐷× 4𝐸𝐻
+FPOinf ∝𝐹× 𝐷= 2𝑝× 𝐷
+Some realistic values (as of 2024):
+• Number of tokens: at inference time, 𝐷≈103. At training time, 𝐷≈5 × 1011 in GPT-3.
+• Training overhead: 𝐸≥1, 𝐻≥1 => 𝑇≥4.
+• Floating-point operations: FPOinf ≈2 × 103𝑝, FPOtrain ≈4 × 1012𝑝.
+• Number of parameters: 𝑝≈2 × 1011 in GPT-3.
+• State-of-the-art GPU performance: FLOPS ≈2 × 1013.
+• 𝑡inf =
+ൗ
+FPOinf FLOPS ≈20 s on a single GPU.
+• 𝑡train =
+ൗ
+FPOtrain FLOPS ≈4 × 1010 s ≈1,268 years on a single GPU.
+• Consumption of a single GPU: 𝑃≈50–500 W. Let us use 100 W.
+• 𝐸train = 𝑃× 𝑡train ≈1 MWh. 𝐸inf = 𝑃× 𝑡inf ≈0.56 kWh.
+
+
+PAGE 50:
+Example Consumptions
+Ethics in NLP
+Consumer
+CO2eq / unit of use
+Lifetime total CO2eq
+Note
+Lightbulb (LED, bright), 15W
+1.5 g/h (France)
+30 kg
+lifetime = 20,000 hrs
+Microwave oven or vac. cleaner, 1000W
+100 g/h (France)
+500 kg
+10 years, 5 min/day, + ~200 kg production
+Laptop, 80W
+8 g/h (France)
+442 kg
+production + 4 years lifetime (US)
+Car (average), fuel per km
+150 g/km
+57,152 kg
+production + 200k kms
+Air travel/passenger, NY-SF
+186 g/km/passenger
+400 kg (flight /passenger)
+1000 attendees at a big AI conf.,
+all flying NY-SF and back
+186 g/km/passenger
+800,000 kg
+only the flights are included
+American life
+16,400 kg/year
+1,312,000 kg
+lifetime = 80 years
+Operation
+Neural arch.
+Time
+kWh × PUE
+CO2eq
+Car emission equiv.
+single training
+Transf. Base (Vaswani et al., 2017)
+12 h
+27 kWh
+12 kg (US)
+80 km
+single training
+Transf. Big (Vaswani et al., 2017)
+84 h
+201 kWh
+87 kg (US)
+580 km
+single training
+BERT Base (Devlin et al., 2019)
+79 h
+1507 kWh
+652 kg (US)
+4,347 km
+NAS (genetic alg.)
+Evolved Transf. (So et al., 2019)
+7,500 kWh
+3,200 kg (US)
+21,300 km
+single training
+GPT-3 (Patterson et al., 2021)
+1,287,000 kWh
+552,100 kg (US)
+lifetime of 10 cars
+single training
+BLOOM (Luccioni et al., 2023)
+433,196 kWh
+24,690 kg (FR)
+half of a car lifetime
+training+experim.
+BLOOM (Luccioni et al., 2023)
+1,163,088 kWh
+66,290 kg (FR)
+more than a car lifetime
+inference, per day
+BLOOM (Luccioni et al., 2023)
+1 day
+19 kg (US)
+127 km
+
+
+PAGE 51:
+The Cost of Training
+Ethics in NLP
+Number of floating point operations to train (log scale)
+
+
+PAGE 52:
+The Cost of Prediction
+Ethics in NLP
+Relation between the energy consumption of a single 
+forward pass (in Joules) and accuracy (in GLUE score) 
+over the years. In more recent LMs, similar performances 
+are reachable with lower energy consumption.
+Desislavov et al. (2023): Trends in AI inference energy consumption: Beyond the performance-vs-parameter laws of deep learning. 
+Sustainable Computing: Informatics and Systems.
+Estimated Joules per forward pass (e.g., one 
+prediction). While the consumption of cutting-edge 
+systems (in blue) is increasing exponentially, more 
+efficient models (in purple) are also produced.
+Nvidia GPU GFLOPS per Watt. Energy 
+efficiency is increasing over time, with 
+the most efficient (mixed-precision) 
+GPUs specifically designed 
+for neural networks.
+
+
+PAGE 53:
+The Cost of Prediction
+Ethics in NLP
+Sun et al. (2020): MobileBERT: a Compact Task-Agnostic BERT for Resource-Limited Devices. ACL.
+• Prediction efficiency efforts: reproduce the performance of large models with less parameters.
+• Smaller network: narrower but equally deep, smaller vocabulary, fewer attention heads, etc.
+• Knowledge distillation: train a small model to reproduce the output of a large model.
+
+
+PAGE 54:
+Some Conclusions
+Ethics in NLP
+• The carbon footprint can vary by an order of magnitude depending on the energy mix.
+• Hardware efficiency can also affect emissions by an order of magnitude.
+• Inference has a much lower cost than training.
+• Some language models were specifically designed for energy/computing efficiency,
+but the latest cutting-edge models are never efficient.
+• Even if inference is way less costly, it is constantly used by billions of people
+(e.g. predictive text in your smartphone).
+
+
+PAGE 55:
+What Can an Engineer Do?
+Ethics in NLP
+• Be able to quantify the carbon footprint / electricity bill of your solution.
+• Inference has a much lower cost than training => reuse as much as possible.
+• Use efficient models specifically designed for this purpose: MobileBERT, SqueezeBERT, 
+ELECTRA, TinyBERT, etc.;
+• Be aware of non-neural solutions that run much faster, use less memory and energy:
+• example 1: language detection solvable at 99.5% accuracy using naïve Bayes;
+• example 2: spam filtering solvable at ~97% F-measure using simple linear regression;
+• example 3: 2023/24 PROCOM project on matching postal addresses solved without any deep learning.
+• Use existing tools to compute AI CO2 emissions, such as https://mlco2.github.io.
+
